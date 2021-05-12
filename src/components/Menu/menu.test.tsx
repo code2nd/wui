@@ -7,7 +7,7 @@ import {
 } from '@testing-library/react';
 
 import Menu, { MenuProps } from './menu';
-import MenuItem from './menu';
+import MenuItem from './menuItem';
 
 const testProps: MenuProps = {
   defaultIndex: 0,
@@ -22,7 +22,7 @@ const testVerProps: MenuProps = {
 
 const generateMenu = (props: MenuProps) => {
   return (
-    <Menu {...props}>
+    <Menu {...props} data-testid="test-menu">
       <MenuItem index={0}>active</MenuItem>
       <MenuItem index={1} disabled>
         disabled

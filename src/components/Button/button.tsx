@@ -27,7 +27,7 @@ type NativeButtonProps = BaseButtonProps &
 type AnchorButtonProps = BaseButtonProps &
   React.AnchorHTMLAttributes<HTMLElement>;
 
-export type ButtonProps = NativeButtonProps & AnchorButtonProps;
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
 const Button: React.FC<ButtonProps> = (props) => {
   const {

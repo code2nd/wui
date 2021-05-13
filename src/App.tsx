@@ -2,6 +2,7 @@ import React from 'react';
 import Button, { ButtonType, ButtonSize } from 'components/Button/button';
 import Menu from 'components/Menu/menu';
 import MenuItem from 'components/Menu/menuItem';
+import SubMenu from 'components/Menu/subMenu';
 
 function App() {
   return (
@@ -29,11 +30,13 @@ function App() {
           console.log(index);
         }}
       >
-        <MenuItem index={0}>active</MenuItem>
-        <MenuItem index={1} disabled>
-          disabled
-        </MenuItem>
-        <MenuItem index={2}>xyz</MenuItem>
+        <MenuItem>active</MenuItem>
+        <MenuItem>menu-item1</MenuItem>
+        <SubMenu title="dropdown">
+          <MenuItem>dropdown 1</MenuItem>
+          <MenuItem>dropdown 2</MenuItem>
+        </SubMenu>
+        <MenuItem>xyz</MenuItem>
         <li>hello</li>
       </Menu>
     </div>

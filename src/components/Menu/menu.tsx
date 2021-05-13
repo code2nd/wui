@@ -25,6 +25,7 @@ const Menu: React.FC<MenuProps> = (props) => {
   const [currentActive, setCurrentActive] = useState(defaultIndex);
   const classes = classNames('w-menu', className, {
     'w-menu-vertical': mode === 'vertical',
+    'w-menu-horizontal': mode !== 'vertical',
   });
 
   const handleClick = (index: number) => {
@@ -45,8 +46,8 @@ const Menu: React.FC<MenuProps> = (props) => {
       const childElement = child as React.FunctionComponentElement<MenuItemProps>;
       const { displayName } = childElement.type;
 
-      if (displayName === 'MenuItem') {
-        return child;
+      if (displayName === 'MenuItem' || displayName === 'SubMenu') {
+        return React.cloneElement(childElement, { index });
       } else {
         console.error(
           'Warming: Menu has a child which is not a MemuItem component'

@@ -1,0 +1,46 @@
+feat: 加入图标和动画
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch menu
+# Your branch is up to date with 'origin/menu'.
+#
+# Changes to be committed:
+#	new file:   .storybook/main.js
+#	new file:   .storybook/preview.js
+#	modified:   package.json
+#	modified:   src/App.tsx
+#	new file:   src/components/Icon/Icon.tsx
+#	new file:   src/components/Icon/_style.scss
+#	modified:   src/components/Menu/_style.scss
+#	modified:   src/components/Menu/menu.test.tsx
+#	modified:   src/components/Menu/menu.tsx
+#	modified:   src/components/Menu/menuItem.tsx
+#	modified:   src/components/Menu/subMenu.tsx
+#	new file:   src/components/Transition/transition.tsx
+#	modified:   src/index.tsx
+#	new file:   src/stories/Button.stories.tsx
+#	new file:   src/stories/Button.tsx
+#	new file:   src/stories/Header.stories.tsx
+#	new file:   src/stories/Header.tsx
+#	new file:   src/stories/Introduction.stories.mdx
+#	new file:   src/stories/Page.stories.tsx
+#	new file:   src/stories/Page.tsx
+#	new file:   src/stories/assets/code-brackets.svg
+#	new file:   src/stories/assets/colors.svg
+#	new file:   src/stories/assets/comments.svg
+#	new file:   src/stories/assets/direction.svg
+#	new file:   src/stories/assets/flow.svg
+#	new file:   src/stories/assets/plugin.svg
+#	new file:   src/stories/assets/repo.svg
+#	new file:   src/stories/assets/stackalt.svg
+#	new file:   src/stories/button.css
+#	new file:   src/stories/header.css
+#	new file:   src/stories/page.css
+#	new file:   src/styles/_animation.scss
+#	modified:   src/styles/_mixin.scss
+#	modified:   src/styles/_variables.scss
+#	modified:   src/styles/index.scss
+#	modified:   yarn.lock
+#

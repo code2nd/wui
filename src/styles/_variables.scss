@@ -111,7 +111,8 @@ $danger   : $red-5 !default;
 $light    : $gray-2 !default;
 $dark     : $gray-9 !default;
 
-$theme-colors: ('primary': $primary,
+$theme-colors: (
+  'primary': $primary,
   'secondary': $secondary,
   'success': $success,
   'info': $info,

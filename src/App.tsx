@@ -24,8 +24,9 @@ function App() {
       <Button size={ButtonSize.Large}>large button</Button>
 
       <Menu
-        mode="vertical"
-        defaultIndex={0}
+        // mode="vertical"
+        defaultIndex={'0'}
+        defaultOpenSubMenus={['2']}
         onSelect={(index) => {
           console.log(index);
         }}
@@ -37,7 +38,6 @@ function App() {
           <MenuItem>dropdown 2</MenuItem>
         </SubMenu>
         <MenuItem>xyz</MenuItem>
-        <li>hello</li>
       </Menu>
     </div>
   );

@@ -63,8 +63,20 @@
   }
 }
 
+.is-vertical {
+  .arrow-icon {
+    transform: rotate(0deg) !important;
+  }
+}
+
+.is-vertical.is-opended {
+  .arrow-icon {
+    transform: rotate(180deg) !important;
+  }
+}
+
 .w-submenu {
-  display     : none;
+  // display     : none;
   list-style  : none;
   padding-left: 0;
   white-space : nowrap;
@@ -84,7 +96,7 @@
 }
 
 .w-submenu.menu-opened {
-  display: block;
+  // display: block;
 }
 
 .w-menu-horizontal {

@@ -1,24 +1,27 @@
-import React, {
+import {
+  FC,
   useState,
-  createContext,
   FunctionComponentElement,
-  useCallback,
   useContext,
+  MouseEvent,
+  Children,
+  cloneElement
 } from "react";
 import classNames from "classnames";
-import { CSSTransition } from 'react-transition-group';
 import { MenuContext } from "./menu";
 import { MenuItemProps } from "./menuItem";
-import Icon from 'components/Icon/Icon';
-import Transition from 'components/Transition/transition';
+import Icon from "components/BaseIcon/baseIcon";
+import Transition from "components/Transition/transition";
 
 export interface SubmenuProps {
+  /** 索引值 */
   index?: string;
+  /** 标题 */
   title?: string;
   className?: string;
-}
+};
 
-const SubMenu: React.FC<SubmenuProps> = ({
+export const SubMenu: FC<SubmenuProps> = ({
   index,
   className,
   title,
@@ -34,13 +37,13 @@ const SubMenu: React.FC<SubmenuProps> = ({
     "is-vertical": context.mode === 'vertical'
   });
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e: MouseEvent) => {
     e.preventDefault();
     setMenuOpen(!menuOpen);
   };
 
   let timer: any;
-  const handleMouse = (e: React.MouseEvent, toggle: boolean) => {
+  const handleMouse = (e: MouseEvent, toggle: boolean) => {
     clearTimeout(timer);
     timer = setTimeout(() => {
       setMenuOpen(toggle);
@@ -52,19 +55,19 @@ const SubMenu: React.FC<SubmenuProps> = ({
   } : {};
 
   const hoverEvents = context.mode !== 'vertical' ? {
-    onMouseEnter: (e: React.MouseEvent) => { handleMouse(e, true) },
-    onMouseLeave: (e: React.MouseEvent) => { handleMouse(e, false) }
+    onMouseEnter: (e: MouseEvent) => { handleMouse(e, true) },
+    onMouseLeave: (e: MouseEvent) => { handleMouse(e, false) }
   } : {};
 
   const renderChildren = () => {
     const subMenuClass = classNames("w-submenu", {
       "menu-opened": menuOpen,
     });
-    const childrenComponent = React.Children.map(children, (child, i) => {
+    const childrenComponent = Children.map(children, (child, i) => {
       const childElement = child as FunctionComponentElement<MenuItemProps>;
       const { displayName } = childElement.type;
       if (displayName === "MenuItem") {
-        return React.cloneElement(childElement, {
+        return cloneElement(childElement, {
           index: `${index}-${i}`
         });
       } else {

@@ -6,11 +6,15 @@ type MenuMode = 'horizontal' | 'vertical';
 type SelectCallback = (selectedIndex: string) => void;
 
 export interface MenuProps {
+  /** 初始选中的菜单项 key 值 */
   defaultIndex?: string;
   className?: string;
+  /** 菜单类型，现在支持垂直和水平两种 */
   mode?: MenuMode;
   style?: React.CSSProperties;
+  /** 被选中时调用 */
   onSelect?: SelectCallback;
+  /** 初始展开的 SubMenu 菜单项 key 数组 */
   defaultOpenSubMenus?: string[];
 }
 
@@ -23,7 +27,7 @@ interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext>({ index: '0' });
 
-const Menu: React.FC<MenuProps> = (props) => {
+export const Menu: React.FC<MenuProps> = (props) => {
   const { className, mode, style, children, defaultIndex, onSelect, defaultOpenSubMenus } = props;
   const [currentActive, setCurrentActive] = useState(defaultIndex);
   const classes = classNames('w-menu', className, {

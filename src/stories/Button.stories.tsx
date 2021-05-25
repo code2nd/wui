@@ -13,7 +13,12 @@ export default {
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
+
+export const Primary: React.VFC<{}> = () => <Button label="Button" />;
+export const Secondary: React.VFC<{}> = () => <Button label="😄👍😍💯" />;
+export const Tertiary: React.VFC<{}> = () => <Button label="📚📕📈🤓" />;
+
+/* export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
   label: 'Button',
@@ -35,3 +40,11 @@ Small.args = {
   size: 'small',
   label: 'Button',
 };
+
+export const MyButton = Template.bind({});
+MyButton.args = {
+  primary: true,
+  size: 'small',
+  label: 'Button',
+}; */
+

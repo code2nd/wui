@@ -9,6 +9,8 @@
 
 @import 'animation';
 
+@import 'global';
+
 // button
 @import '../components/Button/style';
 
@@ -16,4 +18,4 @@
 @import '../components/Menu/style';
 
 // icon
-@import '../components/Icon/style';
+@import '../components/BaseIcon/style';

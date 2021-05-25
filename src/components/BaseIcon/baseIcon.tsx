@@ -8,11 +8,11 @@ library.add(fas);
 
 export type ThemeProps = 'primary' | 'secondary' | 'succedd' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
 
-export interface IconProps extends FontAwesomeIconProps {
+export interface BaseIconProps extends FontAwesomeIconProps {
   theme?: ThemeProps;
 }
 
-const Icon: React.FC<IconProps> = (props) => {
+const BaseIcon: React.FC<BaseIconProps> = (props) => {
   const { className, theme, ...restProps } = props;
   const classes = classNames('w-icon', className, {
     [`w-icon-${theme}`]: theme
@@ -23,4 +23,4 @@ const Icon: React.FC<IconProps> = (props) => {
   )
 }
 
-export default Icon;
+export default BaseIcon;

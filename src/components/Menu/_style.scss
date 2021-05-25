@@ -34,9 +34,17 @@
 .w-submenu-item {
   position: relative;
 
+  &.is-vertical{
+    padding: 0;
+    .w-submenu {
+      padding: $menu-item-padding-y $menu-item-padding-x;
+    }
+  }
+
   .w-submenu-title {
     display    : flex;
     align-items: center;
+    border-left  : $menu-item-active-border-width solid transparent;
   }
 
   .arrow-icon {
@@ -102,6 +110,12 @@
 .w-menu-horizontal {
   >.w-menu-item {
     border-bottom: $menu-item-active-border-width solid transparent;
+
+    &.is-active,
+    &:hover {
+      border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+      border-left  : 0;
+    }
   }
 
   .w-submenu {
@@ -124,10 +138,24 @@
   .w-menu-item {
     border-left: $menu-item-active-border-width solid transparent;
 
+    &.is-vertical {
+      border: none;
+      >.w-submenu-title {
+        padding: $menu-item-padding-y $menu-item-padding-x;
+      }
+    }
+
     &.is-active,
     &:hover {
       border-bottom: 0;
       border-left  : $menu-item-active-border-width solid $menu-item-active-color;
+    }
+
+    &.w-submenu-item:hover{
+      border: none;
+      >.w-submenu-title {
+        border-left  : $menu-item-active-border-width solid $menu-item-active-color;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button, { ButtonType, ButtonSize } from 'components/Button/button';
+import Button from 'components/Button/button';
 import Menu from 'components/Menu/menu';
 import MenuItem from 'components/Menu/menuItem';
 import SubMenu from 'components/Menu/subMenu';
@@ -9,19 +9,19 @@ function App() {
     <div className="App">
       <Button>default button</Button>
       <Button disabled>desabled button</Button>
-      <Button btnType={ButtonType.Primary}>primary button</Button>
-      <Button btnType={ButtonType.Danger}>danger button</Button>
+      <Button btnType='primary'>primary button</Button>
+      <Button btnType='danger'>danger button</Button>
       <Button
-        btnType={ButtonType.Link}
+        btnType='link'
         href="http://www.baidu.com"
         target="_blank"
       >
         link button
       </Button>
-      <Button btnType={ButtonType.Link} href="http://www.baidu.com" disabled>
+      <Button btnType='link' href="http://www.baidu.com" disabled>
         disabled link button
       </Button>
-      <Button size={ButtonSize.Large}>large button</Button>
+      <Button size='lg'>large button</Button>
 
       <Menu
         // mode="vertical"

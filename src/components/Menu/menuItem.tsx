@@ -1,4 +1,4 @@
-import { useContext, FC, CSSProperties } from 'react';
+import React, { useContext, FC, CSSProperties } from 'react';
 import classNames from 'classnames';
 import { MenuContext } from './menu';
 

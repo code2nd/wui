@@ -1,17 +1,17 @@
-import {
+import React, {
   FC,
   useState,
   FunctionComponentElement,
   useContext,
   MouseEvent,
   Children,
-  cloneElement
-} from "react";
-import classNames from "classnames";
-import { MenuContext } from "./menu";
-import { MenuItemProps } from "./menuItem";
-import Icon from "components/BaseIcon/baseIcon";
-import Transition from "components/Transition/transition";
+  cloneElement,
+} from 'react';
+import classNames from 'classnames';
+import { MenuContext } from './menu';
+import { MenuItemProps } from './menuItem';
+import Icon from '../BaseIcon/baseIcon';
+import Transition from '../Transition/transition';
 
 export interface SubmenuProps {
   /** 索引值 */
@@ -19,7 +19,7 @@ export interface SubmenuProps {
   /** 标题 */
   title?: string;
   className?: string;
-};
+}
 
 export const SubMenu: FC<SubmenuProps> = ({
   index,
@@ -29,12 +29,15 @@ export const SubMenu: FC<SubmenuProps> = ({
 }) => {
   const context = useContext(MenuContext);
   const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
-  const isOpened = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false;
+  const isOpened =
+    index && context.mode === 'vertical'
+      ? openedSubMenus.includes(index)
+      : false;
   const [menuOpen, setMenuOpen] = useState(isOpened);
-  const classes = classNames("w-menu-item w-submenu-item", className, {
-    "is-active": context.index === index,
-    "is-opened": menuOpen,
-    "is-vertical": context.mode === 'vertical'
+  const classes = classNames('w-menu-item w-submenu-item', className, {
+    'is-active': context.index === index,
+    'is-opened': menuOpen,
+    'is-vertical': context.mode === 'vertical',
   });
 
   const handleClick = (e: MouseEvent) => {
@@ -47,48 +50,56 @@ export const SubMenu: FC<SubmenuProps> = ({
     clearTimeout(timer);
     timer = setTimeout(() => {
       setMenuOpen(toggle);
-    }, 300)
-  }
+    }, 300);
+  };
 
-  const clickEvents = context.mode === 'vertical' ? {
-    onClick: handleClick
-  } : {};
+  const clickEvents =
+    context.mode === 'vertical'
+      ? {
+          onClick: handleClick,
+        }
+      : {};
 
-  const hoverEvents = context.mode !== 'vertical' ? {
-    onMouseEnter: (e: MouseEvent) => { handleMouse(e, true) },
-    onMouseLeave: (e: MouseEvent) => { handleMouse(e, false) }
-  } : {};
+  const hoverEvents =
+    context.mode !== 'vertical'
+      ? {
+          onMouseEnter: (e: MouseEvent) => {
+            handleMouse(e, true);
+          },
+          onMouseLeave: (e: MouseEvent) => {
+            handleMouse(e, false);
+          },
+        }
+      : {};
 
   const renderChildren = () => {
-    const subMenuClass = classNames("w-submenu", {
-      "menu-opened": menuOpen,
+    const subMenuClass = classNames('w-submenu', {
+      'menu-opened': menuOpen,
     });
     const childrenComponent = Children.map(children, (child, i) => {
       const childElement = child as FunctionComponentElement<MenuItemProps>;
       const { displayName } = childElement.type;
-      if (displayName === "MenuItem") {
+      if (displayName === 'MenuItem') {
         return cloneElement(childElement, {
-          index: `${index}-${i}`
+          index: `${index}-${i}`,
         });
       } else {
         console.error(
-          "Warming: SubMenu has a child which is not a MemuItem component"
+          'Warming: SubMenu has a child which is not a MemuItem component'
         );
       }
     });
 
-    return <Transition
-      in={menuOpen}
-      timeout={300}
-      animation="zoom-in-top"
-    >
-      <ul className={subMenuClass}>{childrenComponent}</ul>
-    </Transition>;
+    return (
+      <Transition in={menuOpen} timeout={300} animation="zoom-in-top">
+        <ul className={subMenuClass}>{childrenComponent}</ul>
+      </Transition>
+    );
   };
 
   return (
-    <li key={index} className={classes} { ...hoverEvents }>
-      <div className="w-submenu-title" { ...clickEvents }>
+    <li key={index} className={classes} {...hoverEvents}>
+      <div className="w-submenu-title" {...clickEvents}>
         {title}
         <Icon icon="angle-down" className="arrow-icon" />
       </div>
@@ -97,6 +108,6 @@ export const SubMenu: FC<SubmenuProps> = ({
   );
 };
 
-SubMenu.displayName = "SubMenu";
+SubMenu.displayName = 'SubMenu';
 
 export default SubMenu;
